@@ -4,37 +4,39 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script defer src="./main.js"></script>
 		<link  rel="stylesheet" href="global.css">
-		<title>TC-Films</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;400;600;700;900&display=swap" rel="stylesheet">
+		<title>BEST MOVIES</title>
 	</head>
 
 	<body>
 		<div class="topBar"></div>
-		<header class="header">
+		<header class="flex-container container-align-between-center">
 			<div class="logo">
-				<h1> TC-Films</h1>
+				<h1>BEST MOVIES</h1>
 			</div>
-			<div class="searchBar">
+			<div class="searchBar flex-container">
 				<input id="searchInput" type="text" placeholder="Cerca">
-				<button id="searchBtn">Cerca</button>
+				<a id="searchBtn" class="btn scaleEffect">CERCA</a>
 			</div>
 		</header>
 
-		<div class="pageTitle"></div>
-
-		<div class="contents flex-container .container-align-center"></div>
-	
+		<main>
+			<div class="pageTitle"></div>
+			<div class="contents flex-container film-container"></div>
+		</main>
+		
 		<script id="templateFilm" type="text/x-handlerbars-template">
-			<div id="item{{i}}">
-				<img style="max-width: 200px" src="{{poster_path}}">
-				<p id="views">{{popularity}} views</p>
-				<h2> {{title}} </h2>
-				<div class="moreInfo">
-					<p id="ratingIcon"><img  src="./star.png" style="width: 20px">
-						<b>{{vote_average}}</b></p>
-					<p>{{overview}}<p>
-					<p> <b>Lingua originale:</b> {{lang}} </p>
-					<p> <b>Data di uscita:</b> {{release_date}} </p>
-				</div>
+			<img class = "poster" src="{{poster_path}}">
+			<p id="views">{{popularity}} views</p>
+			<h2> {{title}} </h2>
+			<div class="moreInfo">
+				<p id="ratingIcon"><img  src="./star.png">
+					<b>{{vote_average}}</b></p>
+				<p>{{overview}}<p>
+				<p> <b>Lingua originale:</b> {{lang}} </p>
+				<p> <b>Data di uscita:</b> {{release_date}} </p>
 			</div>
 		</script>
 	</body>

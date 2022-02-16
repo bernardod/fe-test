@@ -1,9 +1,78 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin:0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Heebo', sans-serif;
+}
 
+main {
+    padding: 5%;
+}
+
+header {
+    background-color: aqua;
+    height: 100px;
+    padding: 0 5% 0 5%;
+}
+
+.container-align-between-center{
+    justify-content: space-between;
+    gap: 5%;
+    align-items: center;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.searchBar > *{
+    height: 30px;
+}
+
+.searchBar input{
+    padding-left: 10px;
+    border-style: none;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    min-width: 100px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.scaleEffect:hover {
+    transform: scale(1.2);
+    transition: all .4s;
+}
+
+.film-container{
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.film{
+    width: 200px;
+    height: 500px;
+}
+
+.poster{
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.moreInfo{
+    display: none;
+}
+
+/*
 .flex-container{
     width: 100%;
     display:flex;
@@ -14,20 +83,31 @@ body {
 
 .flex-item{
     max-width: 200px;
+    height: 500px;
     margin: 2%;
+}
+
+.moreInfo{
+    background-color: white;
+    display: none;
+    padding: 1%;
+    box-shadow: 2px 1px  5px grey;
+    
+}
+
+.film{
     box-shadow: 2px 1px  5px grey;
 }
-.flex-item:hover {
-    transform: scale(1.1,1.1);
-    opacity: 0.85;
+
+.flex-item:hover, .film:hover {
+    
+    transform: scale(1.2,1.2);
 }
 
 .flex-item:hover .moreInfo{
     display:block;
 }
-.container-align-center{
-    justify-content: space-between;
-}
+
 
 #views{
     margin-left: 2%;
@@ -43,27 +123,7 @@ h2, p{
     height: 10px;
     background-color: #7ead29;
 }
-.header{
-    padding: 1% 5% 1% 5%;
-    margin-bottom: 5%;
-    display: flex;
-    height: 60px;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #548bc8;
-}
 
-.logo{
-    display:inline-block;
-    font-weight: 900;
-    font-size: 22pt;
-    color: white
-}
-
-.searchBar{
-    display:inline-block;
-    text-align: left;
-}
 
 #searchInput, #searchBtn {
     border-radius: 20px;
@@ -101,14 +161,17 @@ h2, p{
     font-weight: 500;
 }
 
-.moreInfo{
-    display: none;
-}
-
-.moreInfoHover{
-    display: block;
-}
 
 #ratingIcon{
     font-size: 16pt;
 }
+
+#ratingIcon img {
+    width: 20px;
+}
+
+#posterFilm{
+    max-width: 200px;
+}
+
+*/

@@ -11,6 +11,7 @@ const container = document.querySelector('.contents')
 const pageTitleContainer = document.querySelector('.pageTitle')
 const urlImg = 'https://image.tmdb.org/t/p/w342/'
 
+const filmContainer =document.querySelector('.film')
 
 //button event listner
 searchBtn.addEventListener('click', 
@@ -53,10 +54,7 @@ function posterPath(imgPath){
 }
 
 function appendResults(data) {
-    let i=0
-
     for ( let item of data.results ){
-        i++
         let date=new Date(item.release_date) 
         const context = {
             'poster_path': posterPath(item.poster_path),
@@ -66,14 +64,12 @@ function appendResults(data) {
             'vote_average': item.vote_average,
             'lang': item.original_language,
             'release_date': date.toLocaleDateString('it-IT'),
-            'i': i,
         }
 
         const html = template(context)
 
         const film = document.createElement('div')
         film.classList.add('film')
-        film.classList.add('flex-item')
 
         film.innerHTML = html 
         container.appendChild(film)
@@ -82,13 +78,19 @@ function appendResults(data) {
 }
 
 async function getFilm(query){
-    const url = 'https://api.themoviedb.org/3/search/movie?query=' + query + '&language=it_IT&api_key=26864016a30e377316e6a20d4e37109e'
+    try{
+        const url = 'https://api.themoviedb.org/3/search/movie?query=' + query + '&language=it_IT&api_key=26864016a30e377316e6a20d4e37109e'
 
-    const response = await fetch(url)
-    if(!response.ok) throw new Error('${response.status} - ${response.statusText}')
+        const response = await fetch(url)
+        if(!response.ok) throw new Error('${response.status} - ${response.statusText}')
+    
+        const data = await response.json()
 
-    const data = await response.json()
-    return data
+        return data
+    }
+    catch(error){
+        console.log(error)
+    }
 }
 
 /*

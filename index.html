@@ -11,8 +11,7 @@
 	</head>
 
 	<body>
-		<div class="topBar"></div>
-		<header class="flex-container container-align-between-center">
+		<header class="flex-container align-between-center">
 			<div class="logo">
 				<h1>BEST MOVIES</h1>
 			</div>
@@ -23,20 +22,27 @@
 		</header>
 
 		<main>
-			<div class="pageTitle"></div>
-			<div class="contents flex-container film-container"></div>
+			<div class="main__title"></div>
+			<div class="contents container__film flex-container align-between-center"></div>
 		</main>
 		
 		<script id="templateFilm" type="text/x-handlerbars-template">
-			<img class = "poster" src="{{poster_path}}">
-			<p id="views">{{popularity}} views</p>
-			<h2> {{title}} </h2>
-			<div class="moreInfo">
-				<p id="ratingIcon"><img  src="./star.png">
-					<b>{{vote_average}}</b></p>
-				<p>{{overview}}<p>
-				<p> <b>Lingua originale:</b> {{lang}} </p>
-				<p> <b>Data di uscita:</b> {{release_date}} </p>
+			<img class = "film__poster" src="{{poster_path}}">
+			<div class="film__info">
+				<p id="views">{{popularity}} views</p>
+				<h2> {{title}} </h2>
+			<div>
+			<div class="film film__moreInfo flex-container">
+				<div>
+					<h2> {{title}} </h2>
+					<p class="film__subtitle" id="ratingIcon"><img  src="./star.png">
+						<b>{{vote_average}}</b></p>
+					<p>{{overview}}<p>
+				</div>
+				<div class="film__subtitle">
+					<p> <b>Lingua originale:</b> {{lang}} </p>
+					<p> <b>Data di uscita:</b> {{release_date}} </p>
+				</div>
 			</div>
 		</script>
 	</body>

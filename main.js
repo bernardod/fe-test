@@ -9,10 +9,8 @@ const template = Handlebars.compile(source)
 const searchBtn = document.querySelector('#searchBtn')
 const searchInput = document.querySelector('#searchInput')
 const container = document.querySelector('.contents')
-const pageTitleContainer = document.querySelector('.pageTitle')
+const pageTitleContainer = document.querySelector('.main__title')
 const urlImg = 'https://image.tmdb.org/t/p/w342/'
-
-const filmContainer =document.querySelector('.film')
 
 //button event listner
 searchBtn.addEventListener('click', 
@@ -31,8 +29,6 @@ searchBtn.addEventListener('click',
         }
 })
 
-
-
 function emptyPage(){
     container.innerHTML = ''
     pageTitleContainer.innerHTML = ''
@@ -41,7 +37,7 @@ function emptyPage(){
 function pageTitle(query){
     const resultsTitle = document.createElement('p')
     resultsTitle.classList.add('pageTitle')
-    resultsTitle.append('Risultati di ricerca per "' + query + '": ')
+    resultsTitle.append('Risultati di ricerca per "' + query + '". ')
     pageTitleContainer.appendChild(resultsTitle)
 }
 
@@ -61,7 +57,7 @@ function appendResults(data) {
             'poster_path': posterPath(item.poster_path),
             'title': item.title,
             'popularity': item.popularity,
-            'overview': item.overview,
+            'overview': item.overview.substr(0, 180) + '...',
             'vote_average': item.vote_average,
             'lang': item.original_language,
             'release_date': date.toLocaleDateString('it-IT'),
@@ -71,6 +67,7 @@ function appendResults(data) {
 
         const film = document.createElement('div')
         film.classList.add('film')
+        film.classList.add('scaleEffect')
 
         film.innerHTML = html 
         container.appendChild(film)

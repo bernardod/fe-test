@@ -11,20 +11,28 @@ const container = document.querySelector('.contents')
 const pageTitleContainer = document.querySelector('.main__title')
 const urlImg = 'https://image.tmdb.org/t/p/w342/'
 
-//button event listner
-searchBtn.addEventListener('click', 
-    async function(){
-        const query = searchInput.value.trim()
-        emptyPage()
-        pageTitle(query)
 
-        if(query != ''){
-            getFilm(query).then(data =>{
-                appendResults(data)
-            })
-        }
-        else {
-            searchInput.focus()
+const request = async function(){
+    const query = searchInput.value.trim()
+    emptyPage()
+    
+    if(query != ''){
+        pageTitle(query)
+        getFilm(query).then(data =>{
+            appendResults(data)
+        })
+    }
+    else {
+        searchInput.focus()
+    }
+}
+
+//event listners
+searchBtn.addEventListener('click', request)
+
+searchInput.addEventListener('keypress', (event) => {
+        if(event.code =='Enter'){
+            request()
         }
 })
 
@@ -36,8 +44,12 @@ function emptyPage(){
 function pageTitle(query){
     const resultsTitle = document.createElement('p')
     resultsTitle.classList.add('pageTitle')
-    resultsTitle.append('Risultati di ricerca per "' + query + '". ')
+    resultsTitle.append('Risultati per "' + query + '". ')
     pageTitleContainer.appendChild(resultsTitle)
+
+    const line = document.createElement('div')
+    line.classList.add('main__line')
+    pageTitleContainer.appendChild(line)
 }
 
 function posterPath(imgPath){
@@ -56,7 +68,7 @@ function appendResults(data) {
             'poster_path': posterPath(item.poster_path),
             'title': item.title,
             'popularity': item.popularity,
-            'overview': item.overview.substr(0, 180) + '...',
+            'overview': item.overview.substr(0, 200) + '...',
             'vote_average': item.vote_average,
             'lang': item.original_language,
             'release_date': date.toLocaleDateString('it-IT'),
@@ -89,13 +101,3 @@ async function getFilm(query){
         console.log(error)
     }
 }
-
-/*
-function tryFn(func, param){
-
-    try{
-        //func(param)
-    } catch(error){
-        console.log(error)
-    }
-}*/

@@ -16,27 +16,27 @@
 				<h1>BEST MOVIES</h1>
 			</div>
 			<div class="searchBar flex-container">
-				<input id="searchInput" type="text" placeholder="Cerca">
+				<input id="searchInput" type="text" placeholder="Cerca film">
 				<a id="searchBtn" class="btn scaleEffect">CERCA</a>
 			</div>
 		</header>
 
 		<main>
 			<div class="main__title"></div>
-			<div class="contents container__film flex-container align-between-center"></div>
+			<div class="contents flex-container"></div>
 		</main>
 		
 		<script id="templateFilm" type="text/x-handlerbars-template">
 			<img class = "film__poster" src="{{poster_path}}">
 			<div class="film__info">
-				<p id="views">{{popularity}} views</p>
-				<h2> {{title}} </h2>
+				 <p id="views"> <img src="./visibility.png" class="material-icons"> {{popularity}} 
+				</p>
 			<div>
-			<div class="film film__moreInfo flex-container">
+			<div class="film__moreInfo flex-container">
 				<div>
 					<h2> {{title}} </h2>
-					<p class="film__subtitle" id="ratingIcon"><img  src="./star.png">
-						<b>{{vote_average}}</b></p>
+					<p class="film__subtitle"><img src="./star.png">
+						<b>{{vote_average}}/10</b></p>
 					<p>{{overview}}<p>
 				</div>
 				<div class="film__subtitle">

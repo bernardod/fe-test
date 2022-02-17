@@ -1,3 +1,4 @@
+
 /* UTILITY */
 
 * {
@@ -133,4 +134,25 @@ input{
 
 .film__subtitle img {
     width: 16px;
+}
+
+@media all and (max-width: 1080px) {
+    .film{
+        width: calc( (100% - 20px) / 3 );
+
+    }
+}
+
+@media all and (max-width: 768px) {
+    .film{
+        width: calc( (100% - 10px) / 2 );
+
+    }
+}
+
+@media all and (max-width: 375px) {
+    .film{
+        width: 100%;
+
+    }
 }
